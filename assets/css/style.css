@@ -9,8 +9,8 @@
 # General
 --------------------------------------------------------------*/
 body {
-  font-family: "Open Sans", sans-serif;
-  color: #080808;
+  font-family:'Times New Roman', "Open Sans", sans-serif;
+  color: #45505b;
 }
 
 a {
@@ -160,7 +160,7 @@ h1, h2, h3, h4, h5, h6 {
 .nav-menu a, .nav-menu a:focus {
   display: flex;
   align-items: center;
-  color: #f17a0a;
+  color: #d06400;
   padding: 10px 18px;
   margin-bottom: 8px;
   transition: 0.3s;
@@ -243,8 +243,8 @@ h1, h2, h3, h4, h5, h6 {
 #hero {
   width: 100%;
   height: 100vh;
-  background: url("../img/img.png") top right no-repeat;
-  background-size: 50% 100%;
+  background: url("../img/img0.png") top right no-repeat;
+  background-size: 40% 100%;
   position: relative;
 }
 @media (min-width: 992px) {
@@ -269,13 +269,14 @@ h1, h2, h3, h4, h5, h6 {
   color: #0a0a0a;
 }
 #hero p {
-  color: #050505;
   margin: 15px 0 0 0;
   font-size: 26px;
+  color: #0563bb;
   font-family: "Poppins", sans-serif;
 }
 #hero p span {
-  color: #df6e04;
+  color: red;
+  font-family: 'Apple Chancery';
   letter-spacing: 1px;
 }
 #hero .social-links {
@@ -284,11 +285,10 @@ h1, h2, h3, h4, h5, h6 {
 #hero .social-links a {
   font-size: 24px;
   display: inline-block;
-  font-size: 18px;
   color: #ffffff;
-  background-color: #686666;
+  background-color: #df6e04;
   padding: 5px;
-  border-radius: 50%;
+  border-radius: 40%;
   line-height: 1;
   margin-right: 20px;
   transition: 0.3s;
@@ -317,6 +317,7 @@ h1, h2, h3, h4, h5, h6 {
 --------------------------------------------------------------*/
 section {
   padding: 60px 0;
+  color: #45505b;
   overflow: hidden;
 }
 
@@ -349,7 +350,7 @@ section {
   display: block;
   width: 40px;
   height: 3px;
-  background: #0563bb;
+  background: red;
   bottom: 0;
   left: calc(50% - 20px);
 }
@@ -363,7 +364,7 @@ section {
 .about .content h3 {
   font-weight: 700;
   font-size: 26px;
-  color: #728394;
+  color: #0563bb;
 }
 .about .content ul {
   list-style: none;
@@ -380,7 +381,7 @@ section {
 .about .content ul i {
   font-size: 16px;
   margin-right: 5px;
-  color: #0563bb;
+  color: red;
   line-height: 0;
 }
 .about .content p:last-child {
@@ -404,7 +405,7 @@ section {
   left: 50%;
   transform: translateX(-50%);
   font-size: 24px;
-  background: #0563bb;
+  background: rgb(247, 54, 54);
   color: #fff;
   border-radius: 50px;
   display: inline-flex;
@@ -417,7 +418,7 @@ section {
   font-size: 36px;
   display: block;
   font-weight: 600;
-  color: #011426;
+  color: #0563bb;
 }
 .facts .count-box p {
   padding: 0;
@@ -447,6 +448,7 @@ section {
 .skills .progress .skill .val {
   float: right;
   font-style: normal;
+  color: #0563bb;
 }
 .skills .progress-bar-wrap {
   background: #f2f3f5;
@@ -455,7 +457,7 @@ section {
   width: 1px;
   height: 10px;
   transition: 0.9s;
-  background-color: #0563bb;
+  background-color: rgb(247, 54, 54);
 }
 
 /*--------------------------------------------------------------
@@ -471,7 +473,7 @@ section {
 .resume .resume-item {
   padding: 0 0 20px 20px;
   margin-top: -2px;
-  border-left: 2px solid #0563bb;
+  border-left: 2px solid red;
   position: relative;
 }
 .resume .resume-item h4 {
@@ -480,7 +482,7 @@ section {
   font-weight: 600;
   text-transform: uppercase;
   font-family: "Poppins", sans-serif;
-  color: #0563bb;
+  color: red;
   margin-bottom: 10px;
 }
 .resume .resume-item h5 {
@@ -490,6 +492,9 @@ section {
   display: inline-block;
   font-weight: 600;
   margin-bottom: 10px;
+}
+.resume .resume-item .theme em {
+  color: #0563bb;
 }
 .resume .resume-item ul {
   padding-left: 20px;
@@ -509,7 +514,7 @@ section {
   left: -9px;
   top: 0;
   background: #fff;
-  border: 2px solid #0563bb;
+  border: 2px solid red;
 }
 
 /*--------------------------------------------------------------
@@ -540,7 +545,7 @@ section {
   transition: all 0.3s ease-in-out;
 }
 .portfolio #portfolio-flters li:hover, .portfolio #portfolio-flters li.filter-active {
-  color: #0563bb;
+  color: red;
 }
 .portfolio #portfolio-flters li:last-child {
   margin-right: 0;
@@ -550,7 +555,7 @@ section {
   position: relative;
   overflow: hidden;
   z-index: 1;
-  background: rgba(69, 80, 91, 0.8);
+  background: red;
 }
 .portfolio .portfolio-wrap::before {
   content: "";
@@ -629,7 +634,7 @@ section {
   transition: 0.3s;
 }
 .portfolio .portfolio-wrap .portfolio-links a:hover {
-  color: #148af9;
+  color: red;
 }
 .portfolio .portfolio-wrap:hover::before {
   top: 0;
@@ -668,10 +673,10 @@ section {
   height: 12px;
   background-color: #fff;
   opacity: 1;
-  border: 1px solid #0563bb;
+  border: 1px solid red;
 }
 .portfolio-details .portfolio-details-slider .swiper-pagination .swiper-pagination-bullet-active {
-  background-color: #0563bb;
+  background-color: red;
 }
 .portfolio-details .portfolio-info {
   padding: 30px;
@@ -757,13 +762,13 @@ section {
   box-shadow: 0px 0 35px 0 rgba(0, 0, 0, 0.08);
 }
 .services .iconbox-blue i {
-  color: #47aeff;
+  color: red;
 }
 .services .iconbox-blue:hover .icon i {
   color: #fff;
 }
 .services .iconbox-blue:hover .icon path {
-  fill: #47aeff;
+  fill: red;
 }
 .services .iconbox-orange i {
   color: #ffa76e;
@@ -841,7 +846,7 @@ section {
   margin: 0 0 15px 0;
 }
 .testimonials .testimonial-item .quote-icon-left, .testimonials .testimonial-item .quote-icon-right {
-  color: #90c8fc;
+  color: red;
   font-size: 26px;
 }
 .testimonials .testimonial-item .quote-icon-left {
@@ -868,10 +873,10 @@ section {
   height: 12px;
   background-color: #fff;
   opacity: 1;
-  border: 1px solid #0563bb;
+  border: 1px solid red;
 }
 .testimonials .swiper-pagination .swiper-pagination-bullet-active {
-  background-color: #0563bb;
+  background-color: red;
 }
 @media (min-width: 992px) {
   .testimonials .testimonial-item p {
@@ -888,7 +893,7 @@ section {
 }
 .contact .info i {
   font-size: 20px;
-  color: #0563bb;
+  color: red;
   float: left;
   width: 44px;
   height: 44px;
@@ -916,7 +921,7 @@ section {
   margin-top: 40px;
 }
 .contact .info .email:hover i, .contact .info .address:hover i, .contact .info .phone:hover i {
-  background: #0563bb;
+  background: red;
   color: #fff;
 }
 .contact .php-email-form {
