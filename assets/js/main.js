@@ -1,264 +1,241 @@
-/**
-* Template Name: MyResume - v4.7.0
-* Template URL: https://bootstrapmade.com/free-html-bootstrap-template-my-resume/
-* Author: BootstrapMade.com
-* License: https://bootstrapmade.com/license/
+/*
+	Author       : Theme-Family
+	Template Name:	Al-Muqit - Cv/Resume Portfolio Html Template
+	Version      : 1.0
 */
-(function() {
-  "use strict";
 
-  /**
-   * Easy selector helper function
-   */
-  const select = (el, all = false) => {
-    el = el.trim()
-    if (all) {
-      return [...document.querySelectorAll(el)]
-    } else {
-      return document.querySelector(el)
-    }
-  }
+(function($) {
+    "use strict";
+	
+		/*PRELOADER JS*/
+			$(window).on('load', function() { 
+				$('.atf-status').fadeOut();
+				$('.atf-preloader').delay(350).fadeOut('slow'); 
+			}); 
+		/*END PRELOADER JS*/
+		
+		// Navbar menu-top
+		
+			var nav = $('nav');
+			var navHeight = nav.outerHeight();
 
-  /**
-   * Easy event listener function
-   */
-  const on = (type, el, listener, all = false) => {
-    let selectEl = select(el, all)
-    if (selectEl) {
-      if (all) {
-        selectEl.forEach(e => e.addEventListener(type, listener))
-      } else {
-        selectEl.addEventListener(type, listener)
-      }
-    }
-  }
+			$('.navbar-toggler').on('click', function () {
+				if (!$('#menu-top').hasClass('navbar-collaps')) {
+					$('#menu-top').addClass('navbar-collaps');
+				}
+			});		
 
-  /**
-   * Easy on scroll event listener 
-   */
-  const onscroll = (el, listener) => {
-    el.addEventListener('scroll', listener)
-  }
+		// Navbar Menu Reduce
+		
+			$(window).trigger('scroll');
+			$(window).on('scroll', function () {
+				var pixels = 50;
+				var top = 1200;
+				if ($(window).scrollTop() > pixels) {
+					$('.navbar-expand-md').addClass('navbar-collaps');
+					$('.navbar-expand-md').removeClass('navbar-expend');
+				} else {
+					$('.navbar-expand-md').addClass('navbar-expend');
+					$('.navbar-expand-md').removeClass('navbar-collaps');
+				}
+				if ($(window).scrollTop() > top) {
+					$('.scrolltop-atf').fadeIn(1000, "easeInOutExpo");
+				} else {
+					$('.scrolltop-atf').fadeOut(1000, "easeInOutExpo");
+				}
+			});
 
-  /**
-   * Navbar links active state on scroll
-   */
-  let navbarlinks = select('#navbar .scrollto', true)
-  const navbarlinksActive = () => {
-    let position = window.scrollY + 200
-    navbarlinks.forEach(navbarlink => {
-      if (!navbarlink.hash) return
-      let section = select(navbarlink.hash)
-      if (!section) return
-      if (position >= section.offsetTop && position <= (section.offsetTop + section.offsetHeight)) {
-        navbarlink.classList.add('active')
-      } else {
-        navbarlink.classList.remove('active')
-      }
-    })
-  }
-  window.addEventListener('load', navbarlinksActive)
-  onscroll(document, navbarlinksActive)
 
-  /**
-   * Scrolls to an element with header offset
-   */
-  const scrollto = (el) => {
-    let elementPos = select(el).offsetTop
-    window.scrollTo({
-      top: elementPos,
-      behavior: 'smooth'
-    })
-  }
+		//  Star Scrolling nav
+	
+			$('a.page-scroll[href*="#"]:not([href="#"])').on("click", function () {
+				if (location.pathname.replace(/^\//, '') == this.pathname.replace(/^\//, '') && location.hostname == this.hostname) {
+					var target = $(this.hash);
+					target = target.length ? target : $('[name=' + this.hash.slice(1) + ']');
+					if (target.length) {
+						$('html, body').animate({
+							scrollTop: (target.offset().top - navHeight + 30)
+						}, 1000, "easeInOutExpo");
+						return false;
+					}
+				}
+			});
 
-  /**
-   * Back to top button
-   */
-  let backtotop = select('.back-to-top')
-  if (backtotop) {
-    const toggleBacktotop = () => {
-      if (window.scrollY > 100) {
-        backtotop.classList.add('active')
-      } else {
-        backtotop.classList.remove('active')
-      }
-    }
-    window.addEventListener('load', toggleBacktotop)
-    onscroll(document, toggleBacktotop)
-  }
+		// Closes responsive menu when a scroll trigger link is clicked
+		
+			$('.page-scroll').on("click", function () {
+				$('.navbar-collapse').collapse('hide');
+			});
 
-  /**
-   * Mobile nav toggle
-   */
-  on('click', '.mobile-nav-toggle', function(e) {
-    select('body').classList.toggle('mobile-nav-active')
-    this.classList.toggle('bi-list')
-    this.classList.toggle('bi-x')
-  })
+		// Activate scrollspy to add active class to navbar items on scroll
+			$('body').scrollspy({
+				target: '#menu-top',
+				offset: navHeight
+			});
+        
 
-  /**
-   * Scrool with ofset on links with a class name .scrollto
-   */
-  on('click', '.scrollto', function(e) {
-    if (select(this.hash)) {
-      e.preventDefault()
+		//**================= Sticky =====================**//
+  
+			$(window).on('scroll', function() {
+				if ($(window).scrollTop() > 50) {
+					$('.navbar-expand-md').addClass('navbar-collaps');
+					$('.atf-back-to-top').addClass('open');
+				} else {
+					$('.atf-header-area').removeClass('navbar-collaps');
+					$('.atf-back-to-top').removeClass('open');
+				}
+			});
+		  
+		//**===================Scroll UP ===================**//
 
-      let body = select('body')
-      if (body.classList.contains('mobile-nav-active')) {
-        body.classList.remove('mobile-nav-active')
-        let navbarToggle = select('.mobile-nav-toggle')
-        navbarToggle.classList.toggle('bi-list')
-        navbarToggle.classList.toggle('bi-x')
-      }
-      scrollto(this.hash)
-    }
-  }, true)
+			if ($('.atf-back-to-top').length) {
+			  $(".atf-back-to-top").on('click', function () {
+				var target = $(this).attr('data-targets');
+				// animate
+				$('html, body').animate({
+				  scrollTop: $(target).offset().top
+				}, 1000);
 
-  /**
-   * Scroll with ofset on page load with hash links in the url
-   */
-  window.addEventListener('load', () => {
-    if (window.location.hash) {
-      if (select(window.location.hash)) {
-        scrollto(window.location.hash)
-      }
-    }
-  });
+			  });
+			}
+			
+			//Mouse hover tile effect js//
 
-  /**
-   * Preloader
-   */
-  let preloader = select('#preloader');
-  if (preloader) {
-    window.addEventListener('load', () => {
-      preloader.remove()
-    });
-  }
+			$(".card-s").tilt({
+			  maxTilt: -20,
+			  perspective: 2400,
+			  speed: 2200,
+			  easing: "cubic-bezier(.03,.98,.52,.99)",
+			  scale: 1,
+			  
+			  });
+			  
+		//**===================Typed-word ===================**//	
+		
+			var typed = new Typed('.typed-word', {
+				strings: [" Développeur ."," Physicien ."," Designer ."],
+				typeSpeed: 40,
+				backSpeed: 40,
+				backDelay: 2000,
+				startDelay: 1500,
+				loop: true,
+				showCursor: true
+			});
+			
+		//**===================abh-wab-img ===================**//		
+			$("#atf-wab-img").length && $("#atf-wab-img").wavify({
+				height: 100,
+				bones: 3,
+				amplitude: 50,
+				color: "#fff",
+				speed: .25
+			});	
+		
+		//**===================Odometer JS ===================**//
+		
+			$('.odometer').appear(function() {
+				var odo = $(".odometer");
+				odo.each(function() {
+					var countNumber = $(this).attr("data-count");
+					$(this).html(countNumber);
+				});
+			});
+		
+			  
+		//**===================Porfolio isotope===================**//	 
+			$(window).on('load', function() { 
+			
+				var portfolioIsotope = $('.atf-main-portfolio').isotope({
+					itemSelector: '.atf-grid-portfolio'
+				});
 
-  /**
-   * Hero type effect
-   */
-  const typed = select('.typed')
-  if (typed) {
-    let typed_strings = typed.getAttribute('data-typed-items')
-    typed_strings = typed_strings.split(',')
-    new Typed('.typed', {
-      strings: typed_strings,
-      loop: true,
-      typeSpeed: 100,
-      backSpeed: 50,
-      backDelay: 2000
-    });
-  }
+				$('#atf-portfolio-flters li').on('click', function() {
+					$("#atf-portfolio-flters li").removeClass('filter-active');
+					$(this).addClass('filter-active');
 
-  /**
-   * Skills animation
-   */
-  let skilsContent = select('.skills-content');
-  if (skilsContent) {
-    new Waypoint({
-      element: skilsContent,
-      offset: '80%',
-      handler: function(direction) {
-        let progress = select('.progress .progress-bar', true);
-        progress.forEach((el) => {
-          el.style.width = el.getAttribute('aria-valuenow') + '%'
-        });
-      }
-    })
-  }
+					portfolioIsotope.isotope({
+						filter: $(this).data('filter')
+					});
+				});
+			}); 
+				
 
-  /**
-   * Porfolio isotope and filter
-   */
-  window.addEventListener('load', () => {
-    let portfolioContainer = select('.portfolio-container');
-    if (portfolioContainer) {
-      let portfolioIsotope = new Isotope(portfolioContainer, {
-        itemSelector: '.portfolio-item'
-      });
+		
+		//**===================Magnific Popup ===================**//
 
-      let portfolioFilters = select('#portfolio-flters li', true);
+			var magnifPopup = function() {
+				$('.atf-popup-img').magnificPopup({
+					type: 'image',
+					removalDelay: 300,
+					mainClass: 'mfp-with-zoom',
+					gallery: {
+						enabled: true
+					},
+					zoom: {
+						enabled: true, // By default it's false, so don't forget to enable it
 
-      on('click', '#portfolio-flters li', function(e) {
-        e.preventDefault();
-        portfolioFilters.forEach(function(el) {
-          el.classList.remove('filter-active');
-        });
-        this.classList.add('filter-active');
+						duration: 300, // duration of the effect, in milliseconds
+						easing: 'ease-in-out', // CSS transition easing function
 
-        portfolioIsotope.arrange({
-          filter: this.getAttribute('data-filter')
-        });
-        portfolioIsotope.on('arrangeComplete', function() {
-          AOS.refresh()
-        });
-      }, true);
-    }
+						// The "opener" function should return the element from which popup will be zoomed in
+						// and to which popup will be scaled down
+						// By defailt it looks for an image tag:
+						opener: function(openerElement) {
+							// openerElement is the element on which popup was initialized, in this case its <a> tag
+							// you don't need to add "opener" option if this code matches your needs, it's defailt one.
+							return openerElement.is('img') ? openerElement : openerElement.find('img');
+						}
+					}
+				});
+			};
 
-  });
+			// Call the functions
+			magnifPopup();
+			
+			 /* WOW Scroll Spy
+			========================================================*/
+			 var wow = new WOW({
+				  //disabled for mobile
+					mobile: false
+				});
 
-  /**
-   * Initiate portfolio lightbox 
-   */
-  const portfolioLightbox = GLightbox({
-    selector: '.portfolio-lightbox'
-  });
-
-  /**
-   * Initiate portfolio details lightbox 
-   */
-  const portfolioDetailsLightbox = GLightbox({
-    selector: '.portfolio-details-lightbox',
-    width: '90%',
-    height: '90vh'
-  });
-
-  /**
-   * Portfolio details slider
-   */
-  new Swiper('.portfolio-details-slider', {
-    speed: 400,
-    loop: true,
-    autoplay: {
-      delay: 5000,
-      disableOnInteraction: false
-    },
-    pagination: {
-      el: '.swiper-pagination',
-      type: 'bullets',
-      clickable: true
-    }
-  });
-
-  /**
-   * Testimonials slider
-   */
-  new Swiper('.testimonials-slider', {
-    speed: 600,
-    loop: true,
-    autoplay: {
-      delay: 5000,
-      disableOnInteraction: false
-    },
-    slidesPerView: 'auto',
-    pagination: {
-      el: '.swiper-pagination',
-      type: 'bullets',
-      clickable: true
-    }
-  });
-
-  /**
-   * Animation on scroll
-   */
-  window.addEventListener('load', () => {
-    AOS.init({
-      duration: 1000,
-      easing: 'ease-in-out',
-      once: true,
-      mirror: false
-    })
-  });
-
-})()
+			wow.init();
+		
+		//**===================Testimonial Slider ===================**//
+		
+			$("#testimonial-slider").owlCarousel({
+				margin:3,
+				nav:false,
+				loop:true,
+				dots:true,
+				responsive:{
+					0:{
+						items:1
+					},
+					768:{
+						items:1
+					},
+					1000:{
+						items:1
+					}
+				}
+			});
+			
+		/*START HOME WATER JS*/
+		
+			 if (typeof $.fn.ripples == 'function') {
+				try {
+					$('#atf-ripple').ripples({
+						resolution: 500,
+						perturbance: 0.01
+					});
+				} catch (e) {
+					$('.error').show().text(e);
+				}
+			}
+	
+		/*END HOME WATER JS*/
+			
+	
+        
+})(jQuery);
